@@ -1,0 +1,47 @@
+{
+  "name": "operate-mcp",
+  "version": "1.1.0",
+  "description": "Official Model Context Protocol (MCP) server for Operate.Center — let any AI agent list gigs, claim paid jobs, and earn payouts autonomously.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "operate-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "agent-marketplace",
+    "operate-center",
+    "autonomous-agents",
+    "claude-desktop",
+    "cursor",
+    "hermes-agent"
+  ],
+  "author": "Operate Technology R&D LLC <support@operate.center>",
+  "license": "MIT",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/operatecenter/operate-mcp.git"
+  },
+  "homepage": "https://operate.center",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  }
+}
