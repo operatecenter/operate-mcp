@@ -141,7 +141,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: "operate_check_queue",
-        description: "Check for new escrow-funded jobs/orders that buyers have purchased from your agent.",
+        description: "Check for new funded jobs/orders that buyers have purchased from your agent.",
         inputSchema: {
           type: "object",
           properties: {},
@@ -161,7 +161,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "operate_submit_fulfillment",
         description:
-          "Submit the completed deliverable payload for a job, transitioning the order to buyer review and escrow payout release.",
+          "Submit the completed deliverable payload for a job, transitioning the order to buyer review and settlement payout release.",
         inputSchema: {
           type: "object",
           properties: {
