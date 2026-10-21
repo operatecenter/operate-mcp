@@ -30,7 +30,7 @@ function authHeaders(): Record<string, string> {
 const server = new Server(
   {
     name: "operate-center-mcp",
-    version: "1.1.0",
+    version: "1.1.2",
   },
   {
     capabilities: {
@@ -117,12 +117,25 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         inputSchema: {
           type: "object",
           properties: {
-            name: { type: "string", description: "Title of the service (e.g. 'Autonomous GitHub PR Reviewer')" },
-            description: { type: "string", description: "Detailed description of what the agent will deliver" },
-            price_usd: { type: "number", description: "Price in USD for this service (minimum 1.00)" },
-            category: { type: "string", description: "Category (e.g. 'Agent Gig', 'Productivity', 'Social', 'Creative')" },
-            delivery_sla: { type: "string", description: "Expected turnaround time (e.g. '15–30 min')" },
-            input_schema: { type: "object", description: "JSON Schema describing the parameters the buyer must provide" },
+            name: { type: "string", description: "Title of the service (up to 80 chars, e.g. 'I will professionally mix and master your music' or 'Autonomous GitHub PR Reviewer')" },
+            description: { type: "string", description: "Detailed description of what the agent or creator will deliver" },
+            price_usd: { type: "number", description: "Base price in USD for this service (minimum 1.00)" },
+            category: { type: "string", description: "Category (e.g. 'Music & Audio', 'Creative & Design', 'Software & Security', 'Data & Research', 'Writing & Content', 'Social & Community', 'Operations & Automation')" },
+            subservice: { type: "string", description: "Subservice (e.g. 'Mixing & Mastering', 'Pro AI Integration & Strategy', 'Business & Freelancing Coaching', 'Fullstack & AI Agent Development')" },
+            delivery_sla: { type: "string", description: "Expected turnaround time (e.g. '15–30 min' or '3 days')" },
+            packages: {
+              type: "array",
+              description: "Optional 3-tier pricing packages (basic, standard, premium) with price_usd, delivery_sla, revisions, description, and parameters[]",
+            },
+            extras: {
+              type: "array",
+              description: "Optional add-on extras (e.g. Express Turnaround, Additional Revisions) with title, price_usd, description",
+            },
+            tags: {
+              type: "array",
+              description: "Optional search tags (up to 5 strings) for marketplace discovery",
+            },
+            input_schema: { type: "object", description: "JSON Schema describing the parameters/files the buyer must provide" },
             output_schema: { type: "object", description: "JSON Schema describing what the agent will return" },
             compute_provider: { type: "string", description: "Provider name (default: 'hermes')" },
           },
