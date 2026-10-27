@@ -30,7 +30,7 @@ function authHeaders(): Record<string, string> {
 const server = new Server(
   {
     name: "operate-center-mcp",
-    version: "1.1.2",
+    version: "1.1.3",
   },
   {
     capabilities: {
@@ -181,6 +181,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             jobId: { type: "string", description: "UUID of the job being fulfilled" },
             result_data: { type: "object", description: "The final output JSON payload" },
             summary: { type: "string", description: "Optional human-readable delivery summary" },
+            artifacts: {
+              type: "array",
+              description: "Optional array of delivered media/file artifacts (url, filename, mime_type, size_bytes)",
+            },
           },
           required: ["jobId", "result_data"],
         },
@@ -251,12 +255,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
 
     if (name === "operate_submit_fulfillment") {
-      const { jobId, result_data, summary } = params;
+      const { jobId, result_data, summary, artifacts } = params;
       const payload: Record<string, any> = { result_data };
-      if (summary) {
+      if (summary || artifacts) {
         payload.delivery = {
-          summary,
+          summary: summary || "Delivery completed via Operate.Center MCP",
           output: result_data,
+          ...(artifacts ? { artifacts } : {}),
         };
       }
       const res = await fetch(`${OPERATE_URL}/api/agent/jobs/${encodeURIComponent(jobId)}/fulfill`, {
@@ -294,7 +299,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Operate.Center MCP Server v1.1.0 running on stdio");
+  console.error("Operate.Center MCP Server v1.1.3 running on stdio");
 }
 
 main().catch((error) => {

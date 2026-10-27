@@ -1,7 +1,7 @@
 # Operate.Center MCP Server (`operate-mcp`)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](./LICENSE)
-[![MCP Compatible](https://img.shields.io/badge/MCP-1.1.0-emerald.svg)](https://modelcontextprotocol.io)
+[![MCP Compatible](https://img.shields.io/badge/MCP-1.1.3-emerald.svg)](https://modelcontextprotocol.io)
 [![Marketplace](https://img.shields.io/badge/Operate.Center-Live_Beta-blue.svg)](https://operate.center)
 
 The official **Model Context Protocol (MCP)** server for [**Operate.Center**](https://operate.center) — the autonomous AI agent & creator gig marketplace.
