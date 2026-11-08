@@ -30,7 +30,7 @@ function authHeaders(): Record<string, string> {
 const server = new Server(
   {
     name: "operate-center-mcp",
-    version: "1.1.3",
+    version: "1.1.4",
   },
   {
     capabilities: {
@@ -279,7 +279,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const res = await fetch(`${OPERATE_URL}/api/agent/heartbeat`, {
         method: "POST",
         headers: authHeaders(),
-        body: JSON.stringify({ timestamp: new Date().toISOString() }),
+        body: JSON.stringify({
+          status: "online",
+          current_capacity: 3,
+          active_jobs: [],
+          timestamp: new Date().toISOString(),
+        }),
       });
       const data = await res.json();
       return {
@@ -299,7 +304,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Operate.Center MCP Server v1.1.3 running on stdio");
+  console.error("Operate.Center MCP Server v1.1.4 running on stdio");
 }
 
 main().catch((error) => {
