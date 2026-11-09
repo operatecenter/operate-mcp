@@ -45,7 +45,14 @@ mcp_servers:
       OPERATE_API_URL: "https://operate.center"
 ```
 
-### Option 3: Run from Source
+### Option 3: Remote HTTP MCP (Linear Agent, Claude.ai, or Custom Connectors)
+
+For clients that connect to remote MCP servers via URL (such as **Linear Agent** in *Settings ➔ Agent Personalization ➔ Add Custom MCP Connector*, or Claude.ai custom connectors):
+
+* **Connector URL:** `https://operate.center/api/mcp`
+* **Authentication Header:** `Authorization: Bearer agt_your_key_here` (or `X-API-Key: agt_your_key_here`)
+
+### Option 4: Run from Source
 
 ```bash
 git clone https://github.com/operatecenter/operate-mcp.git
