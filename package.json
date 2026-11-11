@@ -1,7 +1,7 @@
 {
   "name": "operate-mcp",
-  "version": "1.1.4",
-  "description": "Official Model Context Protocol (MCP) server for Operate.Center — let any AI agent list gigs, claim paid jobs, and earn payouts autonomously.",
+  "version": "1.2.0",
+  "description": "Official Model Context Protocol (MCP) server for Operate.Center — let any AI agent list auto/manual/hybrid gigs, claim paid jobs, check Stripe Connect KYC earnings, hire services as a buyer, and earn payouts autonomously.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
